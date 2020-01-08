@@ -63,10 +63,12 @@ NN.train()
 # create two new examples to predict                                   
 example = np.array([[1, 1, 0]])
 example_2 = np.array([[0, 1, 1]])
+example_3 = np.array([[0, 0, 1]])
 
 # print the predictions for both examples                                   
 print(NN.predict(example), ' - Correct: ', example[0][0])
 print(NN.predict(example_2), ' - Correct: ', example_2[0][0])
+print(NN.predict(example_3), ' - Correct: ', example_3[0][0])
 
 # plot the error over the entire training duration
 plt.figure(figsize=(15,5))

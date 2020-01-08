@@ -30,11 +30,11 @@ for i in range(len(x1i1)):
 for i in range(len(x1i1)):
     outputs.append([1])
 
-print(len(outputs))
+#print(len(outputs))
 outputs = np.array(outputs)
 
-print(inputs)
-print(outputs)
+#print(inputs)
+#print(outputs)
 
 # create NeuralNetwork class
 class NeuralNetwork:
@@ -86,16 +86,45 @@ NN = NeuralNetwork(inputs, outputs)
 NN.train()
 
 
+dataset = pd.read_excel(io="trainx.xlsx", sheet_name='test')
+
+x1i1 = dataset.iloc[2:20,0].values
+x2i1 = dataset.iloc[2:20,1].values
+x1i2 = dataset.iloc[2:20,2].values
+x2i2 = dataset.iloc[2:20,3].values
+
+inputs = []
+for i in range(len(x1i1)):
+    inputs.append([x1i1[i], x2i1[i]])
+
+for i in range(len(x1i1)):
+    inputs.append([x1i2[i], x2i2[i]])
+
+#print(len(inputs))
+#inputs = np.array(inputs)
+
+outputs = []
+
+for i in range(len(x1i1)):
+    outputs.append([0])
+
+for i in range(len(x1i1)):
+    outputs.append([1])
+
+#outputs = np.array(outputs)
+
+#print(inputs)
+#print(outputs)
+
+for i in range(len(inputs)):
+    ex = np.array(inputs[i])
+    print(round(NN.predict(ex)[0]), 'Correct: ', outputs[i][0])
+
 
 # create two new examples to predict                                   
-example = np.array([[0.4574, 0.6667]])
+example_1 = np.array([[0.4574, 0.6667]])
 example_2 = np.array([[0.8085, 1]])
 example_3 = np.array([[1, 0.2652]])
-
-# print the predictions for both examples                                   
-print(NN.predict(example), ' - Correct: ', example[0][0])
-print(NN.predict(example_2), ' - Correct: ', example_2[0][0])
-print(NN.predict(example_3), ' - Correct: ', example_3[0][0])
 
 # plot the error over the entire training duration
 #plt.figure(figsize=(15,5))
