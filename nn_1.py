@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt # to plot error during training
 
 import pandas as pd
 
-dataset = pd.read_excel(io="trainx.xlsx", sheet_name='Sheet1')
+dataset = pd.read_excel(io="trainx.xlsx", sheet_name='train')
 
 x1i1 = dataset.iloc[2:20,0].values
 x2i1 = dataset.iloc[2:20,1].values
